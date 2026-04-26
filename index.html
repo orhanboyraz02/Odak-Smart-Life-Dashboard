@@ -14,6 +14,7 @@
             --dark: #1a202c;
             --text: #4a5568;
             --danger: #e53e3e;
+            --warning: #f6ad55;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--dark); line-height: 1.6; }
@@ -23,15 +24,13 @@
         .nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
         .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: 0.3s; font-size: 0.9rem; cursor: pointer; }
+        .nav-links { display: flex; gap: 15px; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: 0.3s; font-size: 0.85rem; cursor: pointer; }
         .nav-links a:hover { color: var(--secondary); }
         .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
-        .login-btn { background: var(--accent); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 600; }
-        .login-btn:hover { background: #38a169 !important; color: white !important; }
+        .login-btn { background: var(--accent); color: white !important; padding: 8px 18px; border-radius: 50px; font-weight: 600; }
         .user-menu { position: relative; cursor: pointer; }
-        .user-menu span { color: var(--primary); font-weight: 600; }
-        .user-dropdown { display: none; position: absolute; right: 0; top: 40px; background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); min-width: 180px; padding: 10px 0; z-index: 1001; }
+        .user-dropdown { display: none; position: absolute; right: 0; top: 40px; background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); min-width: 200px; padding: 10px 0; z-index: 1001; }
         .user-dropdown.show { display: block; }
         .user-dropdown a { display: block; padding: 10px 20px; color: var(--text); text-decoration: none; font-size: 0.85rem; }
         .user-dropdown a:hover { background: var(--light); color: var(--primary); }
@@ -48,9 +47,10 @@
         .btn-outline-dark { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
         .btn-outline-dark:hover { background: var(--primary); color: white; }
         .btn-danger { background: var(--danger); color: white; }
+        .btn-warning { background: var(--warning); color: var(--dark); }
         
         /* SECTION */
-        section { padding: 80px 20px; }
+        section { padding: 60px 20px; }
         .container { max-width: 1200px; margin: auto; }
         .section-title { text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
         .section-subtitle { text-align: center; color: var(--text); margin-bottom: 50px; font-size: 1.1rem; }
@@ -58,36 +58,37 @@
         /* MODAL */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; }
         .modal.show { display: flex; }
-        .modal-content { background: white; border-radius: 20px; padding: 30px; width: 90%; max-width: 450px; position: relative; }
+        .modal-content { background: white; border-radius: 20px; padding: 30px; width: 90%; max-width: 500px; position: relative; max-height: 80vh; overflow-y: auto; }
         .modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; background: none; border: none; }
-        .modal input, .modal select { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; }
+        .modal input, .modal select, .modal textarea { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; }
         .modal h3 { margin-bottom: 20px; color: var(--primary); text-align: center; }
-        .tab-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
-        .tab-btn { flex: 1; padding: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; background: var(--light); color: var(--text); }
-        .tab-btn.active { background: var(--accent); color: white; }
         
         /* SERVICES */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .service-card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; border-top: 4px solid var(--accent); }
+        .service-card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; border-top: 4px solid var(--accent); position: relative; }
         .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .service-card .icon { font-size: 2.5rem; margin-bottom: 15px; }
         .service-card h3 { color: var(--primary); margin-bottom: 10px; }
         .service-card ul { list-style: none; margin-top: 15px; }
         .service-card ul li { padding: 5px 0; color: var(--text); font-size: 0.9rem; }
         .service-card ul li::before { content: "◆ "; color: var(--accent); }
-
+        .edit-btn { position: absolute; top: 10px; right: 10px; background: var(--warning); color: var(--dark); border: none; border-radius: 8px; padding: 4px 10px; cursor: pointer; font-size: 0.7rem; display: none; }
+        .service-card:hover .edit-btn { display: block; }
+        
         /* MARKET */
         .market-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-        .market-card { background: white; border-radius: 16px; padding: 25px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .market-card { background: white; border-radius: 16px; padding: 25px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); position: relative; }
+        .market-card:hover .edit-btn { display: block; }
         .market-card .icon { font-size: 3rem; margin-bottom: 10px; }
         .market-card h4 { color: var(--primary); }
         
         /* FEATURES */
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; text-align: center; }
-        .feature-item { background: var(--light); border-radius: 16px; padding: 30px 20px; }
+        .feature-item { background: var(--light); border-radius: 16px; padding: 30px 20px; position: relative; }
+        .feature-item:hover .edit-btn { display: block; }
         .feature-item .icon { font-size: 2.5rem; margin-bottom: 10px; }
         .feature-item h4 { color: var(--primary); }
-
+        
         /* STATS */
         .stats { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; text-align: center; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
@@ -95,16 +96,19 @@
         
         /* FUND */
         .fund-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-        .fund-card { background: white; border-radius: 16px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); text-align: center; }
+        .fund-card { background: white; border-radius: 16px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); text-align: center; position: relative; }
+        .fund-card:hover .edit-btn { display: block; }
         
         /* TEAM */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
-        .team-card { text-align: center; background: white; border-radius: 16px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .team-card { text-align: center; background: white; border-radius: 16px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); position: relative; }
+        .team-card:hover .edit-btn { display: block; }
         .team-avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 15px; font-weight: bold; }
         
         /* STEPS */
         .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; text-align: center; }
-        .step-item { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .step-item { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); position: relative; }
+        .step-item:hover .edit-btn { display: block; }
         .step-number { width: 50px; height: 50px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 15px; }
         
         /* CONTACT */
@@ -116,16 +120,14 @@
         /* ADMIN PANEL */
         .admin-panel { display: none; }
         .admin-panel.show { display: block; }
-        .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
         .admin-card { background: white; border-radius: 16px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
         .admin-card h4 { color: var(--primary); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); }
-        .admin-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        .admin-table th, .admin-table td { padding: 10px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .admin-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+        .admin-table th, .admin-table td { padding: 8px; text-align: left; border-bottom: 1px solid #e2e8f0; }
         .admin-table th { background: var(--light); color: var(--primary); }
-        .badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
-        .badge-admin { background: #fef3c7; color: #92400e; }
-        .badge-user { background: #dbeafe; color: #1e40af; }
-        .badge-editor { background: #d1fae5; color: #065f46; }
+        .tag { display: inline-block; background: var(--accent); color: white; padding: 6px 12px; border-radius: 20px; margin: 3px; font-size: 0.8rem; cursor: pointer; }
+        .tag:hover { background: #38a169; }
         
         /* FOOTER */
         footer { background: var(--dark); color: white; padding: 50px 20px 20px; }
@@ -136,9 +138,10 @@
         .footer-grid ul li a { color: #a0aec0; text-decoration: none; font-size: 0.85rem; }
         .footer-grid ul li a:hover { color: var(--accent); }
         .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #4a5568; color: #a0aec0; font-size: 0.85rem; }
-        
-        .tag { display: inline-block; background: var(--accent); color: white; padding: 8px 16px; border-radius: 20px; margin: 5px; font-size: 0.85rem; }
         .hidden { display: none !important; }
+        .tab-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab-btn { flex: 1; padding: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; background: var(--light); color: var(--text); }
+        .tab-btn.active { background: var(--accent); color: white; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: white; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
@@ -160,22 +163,16 @@
         <ul class="nav-links">
             <li><a href="#home">Ana Sayfa</a></li>
             <li><a href="#services">Hizmetler</a></li>
-            <li><a href="#market">Doğal Life Market</a></li>
-            <li><a href="#erdemli">Erdemli Yaşam</a></li>
-            <li><a href="#dijital">Dijital Platform</a></li>
-            <li><a href="#fon">Dayanışma Fonu</a></li>
-            <li><a href="#ortaklik">İş Ortaklığı</a></li>
-            <li><a href="#gencler">Gençlerle İşbirliği</a></li>
-            <li><a href="#hakkimizda">Hakkımızda</a></li>
+            <li><a href="#market">Market</a></li>
+            <li><a href="#dijital">Dijital</a></li>
             <li><a href="#contact">İletişim</a></li>
             <li id="nav-login"><a class="login-btn" onclick="openLoginModal()">🔐 Giriş</a></li>
             <li id="nav-user" class="hidden">
                 <div class="user-menu" onclick="document.getElementById('userDropdown').classList.toggle('show')">
-                    <span id="nav-username">👤 Kullanıcı</span>
+                    <span id="nav-username">👤</span>
                     <div class="user-dropdown" id="userDropdown">
-                        <a onclick="navigateTo('profile')">👤 Profilim</a>
                         <a onclick="navigateTo('admin')" id="admin-link-menu" class="hidden">🛡️ Yönetim Paneli</a>
-                        <a onclick="logout()">🚪 Çıkış Yap</a>
+                        <a onclick="logout()">🚪 Çıkış</a>
                     </div>
                 </div>
             </li>
@@ -190,17 +187,24 @@
         <h3 id="modalTitle">🔐 Giriş Yap</h3>
         <div class="tab-buttons">
             <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Giriş</button>
-            <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Kayıt Ol</button>
+            <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Kayıt</button>
         </div>
         <form id="authForm" onsubmit="handleAuth(event)">
             <input type="text" id="authName" placeholder="Ad Soyad" class="hidden">
             <input type="email" id="authEmail" placeholder="E-posta" required>
             <input type="password" id="authPassword" placeholder="Şifre" required>
-            <button type="submit" class="btn btn-primary" style="width:100%;" id="authSubmitBtn">Giriş Yap</button>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Giriş Yap</button>
         </form>
-        <p style="text-align:center; margin-top:10px; font-size:0.8rem; color:var(--text);">
-            Demo: admin@odak.com / admin123
-        </p>
+        <p style="text-align:center;margin-top:10px;font-size:0.8rem;color:var(--text);">Demo: admin@odak.com / admin123</p>
+    </div>
+</div>
+
+<!-- DÜZENLEME MODALI -->
+<div class="modal" id="editModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeEditModal()">✕</button>
+        <h3 id="editModalTitle">✏️ Düzenle</h3>
+        <form id="editForm" onsubmit="saveEdit(event)"></form>
     </div>
 </div>
 
@@ -209,8 +213,6 @@
     <h1>Teknoloji, Ticaret ve Sürdürülebilir Yaşam</h1>
     <p>ODAK Smart&Life olarak, dijital dönüşümden doğal yaşama, teknolojiden erdemli topluma kadar geniş bir yelpazede hizmet sunuyoruz.</p>
     <a href="#services" class="btn btn-primary">Hizmetlerimiz</a>
-    <a href="#market" class="btn btn-outline">Doğal Life Market</a>
-    <a href="#dijital" class="btn btn-outline">Dijital Platform</a>
     <a href="#contact" class="btn btn-outline">İletişime Geçin</a>
 </header>
 
@@ -218,155 +220,81 @@
 <section id="services">
     <div class="container">
         <h2 class="section-title">Ana Hizmet Alanlarımız</h2>
-        <p class="section-subtitle">ODAK Smart&Life olarak 4 temel alanda uzman çözümler sunuyoruz</p>
-        <div class="services-grid">
-            <div class="service-card"><div class="icon">⚙️</div><h3>Teknoloji Çözümleri</h3><p>Yapay zeka, IoT, akıllı sistemler ve dijital dönüşüm için kapsamlı teknoloji çözümleri.</p><ul><li>Akıllı Ev/İşyeri Sistemleri</li><li>IoT ve Sensör Ağları</li><li>Yapay Zeka Uygulamaları</li><li>Bulut Bilişim Çözümleri</li></ul></div>
-            <div class="service-card"><div class="icon">🎓</div><h3>Eğitim & Danışmanlık</h3><p>Kurumsal danışmanlık, bireysel eğitim programları ve mentorluk hizmetleri.</p><ul><li>Dijital Dönüşüm Danışmanlığı</li><li>Teknik Eğitim Programları</li><li>Kariyer Koçluğu</li><li>Kurumsal Eğitimler</li></ul></div>
-            <div class="service-card"><div class="icon">🏭</div><h3>Üretim & Pazarlama</h3><p>Prototip geliştirme, seri üretim ve dijital pazarlama çözümleri.</p><ul><li>3D Yazıcı ile Prototip</li><li>Akıllı Cihaz Üretimi</li><li>Dijital Pazarlama</li><li>Marka Yönetimi</li></ul></div>
-            <div class="service-card"><div class="icon">💻</div><h3>Dijital Platform</h3><p>Kapsamlı dijital ekosistem: öğren, üret, pazarla, takas, kirala, destek al.</p><ul><li>E-Öğrenme Platformu</li><li>Dijital Pazar Yeri</li><li>Takas & Kiralama Sistemi</li><li>Mikro Kredi Desteği</li></ul></div>
+        <p class="section-subtitle">4 temel alanda uzman çözümler</p>
+        <div class="services-grid" id="servicesContainer"></div>
+        <div style="text-align:center;margin-top:20px;">
+            <button class="btn btn-primary hidden" id="addServiceBtn" onclick="addNewItem('services')">➕ Yeni Hizmet Ekle</button>
         </div>
     </div>
 </section>
 
 <!-- DOĞAL LIFE MARKET -->
-<section id="market" style="background: #f0fff4;">
+<section id="market" style="background:#f0fff4;">
     <div class="container">
         <h2 class="section-title">🌿 Doğal Life Market</h2>
-        <p class="section-subtitle">Organik, doğal ve sürdürülebilir ürünlerin buluştuğu pazar yerimizde, yerel üreticileri tüketicilerle buluşturuyoruz. Sağlıklı yaşam için güvenilir ürünler.</p>
-        <div class="market-grid">
-            <div class="market-card"><div class="icon">🥬</div><h4>Organik Ürünler</h4><p>Doğal yöntemlerle yetiştirilmiş, sertifikalı organik ürünler</p></div>
-            <div class="market-card"><div class="icon">👨‍🌾</div><h4>Yerel Üreticiler</h4><p>Yöresel üreticilerden doğrudan tüketiciye ulaşım</p></div>
-            <div class="market-card"><div class="icon">♻️</div><h4>Sürdürülebilirlik</h4><p>Çevre dostu paketleme ve sıfır atık hedefi</p></div>
-            <div class="market-card"><div class="icon">✅</div><h4>Kalite Garantisi</h4><p>Tüm ürünler kalite kontrol sürecinden geçer</p></div>
-        </div>
-        <div style="text-align: center; margin-top: 25px;">
-            <span class="tag">Organik Gıda</span><span class="tag">Doğal Kozmetik</span><span class="tag">Şifalı Bitkiler</span><span class="tag">Doğal Tekstil</span>
-        </div>
-        <div style="text-align: center; margin-top: 25px;">
-            <a href="#" class="btn btn-primary">Ürün Satışı Başlat</a>
-            <a href="#" class="btn btn-primary" style="background:var(--secondary);">Üretici Olarak Katıl</a>
+        <div class="market-grid" id="marketContainer"></div>
+        <div style="text-align:center;margin-top:25px;">
+            <span class="tag">Organik Gıda</span><span class="tag">Doğal Kozmetik</span>
         </div>
     </div>
 </section>
 
-<!-- ERDEMLİ YAŞAM -->
-<section id="erdemli"><div class="container">
-    <h2 class="section-title">🌟 Erdemli Yaşam Topluluğu</h2>
-    <p class="section-subtitle">Değer odaklı, bilinçli ve anlamlı bir yaşam için bir araya geldiğimiz topluluğumuzda, birlikte öğreniyor, birlikte büyüyoruz.</p>
-    <div class="features-grid">
-        <div class="feature-item"><div class="icon">📖</div><h4>Değerler Eğitimi</h4></div>
-        <div class="feature-item"><div class="icon">🤝</div><h4>Topluluk Buluşmaları</h4></div>
-        <div class="feature-item"><div class="icon">📚</div><h4>Kitap Okumaları</h4></div>
-        <div class="feature-item"><div class="icon">💝</div><h4>Gönüllülük Projeleri</h4></div>
-        <div class="feature-item"><div class="icon">🧘</div><h4>Farkındalık Atölyeleri</h4></div>
-        <div class="feature-item"><div class="icon">🌍</div><h4>Sürdürülebilir Yaşam</h4></div>
-        <div class="feature-item"><div class="icon">🔄</div><h4>Paylaşım Kültürü</h4></div>
-        <div class="feature-item"><div class="icon">🌈</div><h4>Kapsayıcı Topluluk</h4></div>
-    </div>
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="#" class="btn btn-primary">Topluluğa Katıl</a>
-        <a href="#" class="btn btn-outline-dark">Etkinliklerimize Gel</a>
-    </div>
-</div></section>
-
 <!-- DİJİTAL PLATFORM -->
-<section id="dijital" style="background: #ebf8ff;"><div class="container">
-    <h2 class="section-title">💻 Dijital Platform Özelliklerimiz</h2>
-    <p class="section-subtitle">Kapsamlı dijital ekosistemimizle ihtiyaçlarınıza çözüm sunuyoruz</p>
-    <div class="features-grid">
-        <div class="feature-item"><div class="icon">📘</div><h4>ÖĞREN</h4></div>
-        <div class="feature-item"><div class="icon">⚡</div><h4>ÜRET</h4></div>
-        <div class="feature-item"><div class="icon">🚀</div><h4>PAZARLA</h4></div>
-        <div class="feature-item"><div class="icon">🔄</div><h4>TAKAS</h4></div>
-        <div class="feature-item"><div class="icon">🔑</div><h4>KİRALA</h4></div>
-        <div class="feature-item"><div class="icon">🤲</div><h4>DESTEK</h4></div>
+<section id="dijital" style="background:#ebf8ff;">
+    <div class="container">
+        <h2 class="section-title">💻 Dijital Platform</h2>
+        <div class="features-grid" id="digitalContainer"></div>
     </div>
-</div></section>
+</section>
 
-<!-- DAYANIŞMA FONU -->
-<section id="fon"><div class="container">
-    <h2 class="section-title">💰 IMC Dayanışma Fonu</h2>
-    <p class="section-subtitle">Topluluk dayanışması ile güçlenmek için kurduğumuz IMC Dayanışma Fonu</p>
-    <div class="fund-grid">
-        <div class="fund-card"><div class="icon" style="font-size:2.5rem;">💡</div><h4>Proje Finansmanı</h4></div>
-        <div class="fund-card"><div class="icon" style="font-size:2.5rem;">🎓</div><h4>Eğitim Desteği</h4></div>
-        <div class="fund-card"><div class="icon" style="font-size:2.5rem;">🆘</div><h4>Acil İhtiyaç Desteği</h4></div>
-        <div class="fund-card"><div class="icon" style="font-size:2.5rem;">🔍</div><h4>Şeffaf Yönetim</h4></div>
+<!-- İSTATİSTİKLER -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid" id="statsContainer">
+            <div class="stat-item"><h3>500+</h3><p>Aktif Kullanıcı</p></div>
+            <div class="stat-item"><h3>150+</h3><p>Proje</p></div>
+            <div class="stat-item"><h3>25+</h3><p>Eğitim</p></div>
+            <div class="stat-item"><h3>98%</h3><p>Memnuniyet</p></div>
+        </div>
     </div>
-    <div class="stats-grid" style="margin-top:30px;">
-        <div class="stat-item"><h3>250K+</h3><p>Toplam Fon</p></div>
-        <div class="stat-item"><h3>45+</h3><p>Proje</p></div>
-        <div class="stat-item"><h3>120+</h3><p>Kişi</p></div>
-    </div>
-    <div style="text-align:center;margin-top:25px;">
-        <a href="#" class="btn btn-primary">Fon Desteği Al</a>
-        <a href="#" class="btn btn-primary" style="background:var(--secondary);">Fona Katkıda Bulun</a>
-    </div>
-</div></section>
+</section>
 
-<!-- İŞ ORTAKLIĞI -->
-<section id="ortaklik" style="background:var(--light);"><div class="container">
-    <h2 class="section-title">🤝 İş Ortaklığı Fırsatları</h2>
-    <p class="section-subtitle">Teknoloji, üretim ve pazarlama alanlarında güçlü iş birlikleri arıyoruz.</p>
-    <div class="market-grid">
-        <div class="market-card"><div class="icon">💻</div><h4>Teknoloji İş Birlikleri</h4></div>
-        <div class="market-card"><div class="icon">🏭</div><h4>Üretim Ortaklıkları</h4></div>
-        <div class="market-card"><div class="icon">📢</div><h4>Pazarlama İş Birlikleri</h4></div>
+<!-- EKİP -->
+<section id="hakkimizda">
+    <div class="container">
+        <h2 class="section-title">Ekibimiz</h2>
+        <div class="team-grid" id="teamContainer"></div>
     </div>
-    <div style="text-align:center;margin-top:25px;"><a href="#" class="btn btn-primary">İş Ortaklığı Teklifiniz İçin Tıklayın</a></div>
-</div></section>
+</section>
 
-<!-- GENÇLERLE İŞBİRLİĞİ -->
-<section id="gencler"><div class="container">
-    <h2 class="section-title">👨‍🎓 Gençlerle İş Çözümleri</h2>
-    <div class="fund-grid">
-        <div class="fund-card"><h4>Genç Girişimcilik</h4></div>
-        <div class="fund-card"><h4>Staj & Kariyer</h4></div>
-        <div class="fund-card"><h4>Proje Bazlı İş</h4></div>
-        <div class="fund-card"><h4>Micro-Girişim</h4></div>
+<!-- İLETİŞİM -->
+<section id="contact" style="background:var(--light);">
+    <div class="container">
+        <h2 class="section-title">İletişim</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div><strong>📍 Adres</strong><p>Teknopark İstanbul</p></div>
+                <div><strong>📞 Telefon</strong><p>+90 (212) 123 45 67</p></div>
+                <div><strong>📧 E-posta</strong><p>info@odaksmartlife.com</p></div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Adınız">
+                <input type="email" placeholder="E-posta">
+                <textarea placeholder="Mesajınız"></textarea>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Mesaj Gönder</button>
+            </form>
+        </div>
     </div>
-    <div style="text-align:center;margin-top:25px;"><a href="#" class="btn btn-primary">Gençlik Projeleri İçin İletişime Geçin</a></div>
-</div></section>
+</section>
 
 <!-- ADMIN PANEL -->
 <section id="adminPanel" class="admin-panel" style="background:var(--light);">
     <div class="container">
         <h2 class="section-title">🛡️ Yönetim Paneli</h2>
-        <p class="section-subtitle">Kullanıcı yönetimi, site içeriği ve ayarlar</p>
+        <p class="section-subtitle">Kullanıcılar, ürünler, hizmetler ve tüm içerik yönetimi</p>
         <div class="admin-grid" id="adminContent"></div>
     </div>
 </section>
-
-<!-- EKİP -->
-<section id="hakkimizda"><div class="container">
-    <h2 class="section-title">Ekibimiz</h2>
-    <div class="team-grid">
-        <div class="team-card"><div class="team-avatar">AY</div><h4>Ahmet Yılmaz</h4><p>Kurucu & CEO</p></div>
-        <div class="team-card"><div class="team-avatar">MD</div><h4>Mehmet Demir</h4><p>CTO</p></div>
-        <div class="team-card"><div class="team-avatar">AK</div><h4>Ayşe Kaya</h4><p>COO</p></div>
-        <div class="team-card"><div class="team-avatar">FŞ</div><h4>Fatma Şahin</h4><p>CMO</p></div>
-    </div>
-</div></section>
-
-<!-- İLETİŞİM -->
-<section id="contact" style="background:var(--light);"><div class="container">
-    <h2 class="section-title">İletişim</h2>
-    <div class="contact-grid">
-        <div class="contact-info">
-            <div><strong>📍 Adres</strong><p>Teknopark İstanbul</p></div>
-            <div><strong>📞 Telefon</strong><p>+90 (212) 123 45 67</p></div>
-            <div><strong>📧 E-posta</strong><p>info@odaksmartlife.com</p></div>
-            <div><strong>🕐 Çalışma Saatleri</strong><p>Pazartesi - Cuma: 09:00 - 18:00</p></div>
-        </div>
-        <form class="contact-form">
-            <input type="text" placeholder="Adınız">
-            <input type="email" placeholder="E-posta">
-            <select><option>Konu Seçiniz</option></select>
-            <textarea placeholder="Mesajınız"></textarea>
-            <button type="submit" class="btn btn-primary" style="width:100%;">Mesaj Gönder</button>
-        </form>
-    </div>
-</div></section>
 
 <!-- FOOTER -->
 <footer>
@@ -375,16 +303,10 @@
             <div><h4>ODAK Smart&Life</h4><p style="color:#a0aec0;font-size:0.85rem;">Teknoloji, ticaret ve sürdürülebilir yaşam.</p></div>
             <div><h4>Hızlı Bağlantılar</h4><ul>
                 <li><a href="#home">Ana Sayfa</a></li><li><a href="#services">Hizmetler</a></li>
-                <li><a href="#market">Doğal Life Market</a></li><li><a href="#erdemli">Erdemli Yaşam</a></li>
-                <li><a href="#fon">Dayanışma Fonu</a></li><li><a href="#contact">İletişim</a></li>
-            </ul></div>
-            <div><h4>Hizmetlerimiz</h4><ul>
-                <li><a href="#">Teknoloji Çözümleri</a></li><li><a href="#">Eğitim & Danışmanlık</a></li>
-                <li><a href="#">Üretim & Pazarlama</a></li><li><a href="#">Dijital Platform</a></li>
+                <li><a href="#market">Market</a></li><li><a href="#contact">İletişim</a></li>
             </ul></div>
             <div><h4>İletişim</h4>
                 <p style="color:#a0aec0;font-size:0.85rem;">📍 Teknopark İstanbul</p>
-                <p style="color:#a0aec0;font-size:0.85rem;">📞 +90 (212) 123 45 67</p>
                 <p style="color:#a0aec0;font-size:0.85rem;">📧 info@odaksmartlife.com</p>
             </div>
         </div>
@@ -393,225 +315,291 @@
 </footer>
 
 <script>
-// ============ KULLANICI SİSTEMİ ============
-const defaultUsers = [
-    { id: 1, name: 'Ahmet Yılmaz', email: 'admin@odak.com', password: 'admin123', role: 'admin' },
-    { id: 2, name: 'Ayşe Kaya', email: 'ayse@odak.com', password: '123456', role: 'editor' },
-    { id: 3, name: 'Mehmet Demir', email: 'mehmet@odak.com', password: '123456', role: 'user' },
-];
+// ============ DATA STORE ============
+const defaultData = {
+    services: [
+        { id:1, icon:'⚙️', title:'Teknoloji Çözümleri', desc:'Yapay zeka, IoT, akıllı sistemler.', items:['Akıllı Ev Sistemleri','IoT Sensör Ağları','Yapay Zeka','Bulut Bilişim'] },
+        { id:2, icon:'🎓', title:'Eğitim & Danışmanlık', desc:'Kurumsal ve bireysel eğitim.', items:['Dijital Dönüşüm','Teknik Eğitim','Kariyer Koçluğu','Kurumsal Eğitim'] },
+        { id:3, icon:'🏭', title:'Üretim & Pazarlama', desc:'Prototip ve seri üretim.', items:['3D Yazıcı Prototip','Akıllı Cihaz','Dijital Pazarlama','Marka Yönetimi'] },
+        { id:4, icon:'💻', title:'Dijital Platform', desc:'Öğren, üret, pazarla.', items:['E-Öğrenme','Dijital Pazar','Takas Sistemi','Mikro Kredi'] }
+    ],
+    market: [
+        { id:1, icon:'🥬', title:'Organik Ürünler', desc:'Sertifikalı organik ürünler' },
+        { id:2, icon:'👨‍🌾', title:'Yerel Üreticiler', desc:'Doğrudan tüketiciye' },
+        { id:3, icon:'♻️', title:'Sürdürülebilirlik', desc:'Çevre dostu paketleme' },
+        { id:4, icon:'✅', title:'Kalite Garantisi', desc:'Kalite kontrol süreci' }
+    ],
+    digital: [
+        { id:1, icon:'📘', title:'ÖĞREN', desc:'Online Eğitimler' },
+        { id:2, icon:'⚡', title:'ÜRET', desc:'Sertifika Programları' },
+        { id:3, icon:'🚀', title:'PAZARLA', desc:'Mentorluk' },
+        { id:4, icon:'🔄', title:'TAKAS', desc:'Dijital Kütüphane' },
+        { id:5, icon:'🔑', title:'KİRALA', desc:'Kaynak Paylaşımı' },
+        { id:6, icon:'🤲', title:'DESTEK', desc:'Mikro Kredi' }
+    ],
+    team: [
+        { id:1, initials:'AY', name:'Ahmet Yılmaz', role:'Kurucu & CEO', detail:'Mekatronik Mühendisi' },
+        { id:2, initials:'MD', name:'Mehmet Demir', role:'CTO', detail:'Bilgisayar Mühendisi' },
+        { id:3, initials:'AK', name:'Ayşe Kaya', role:'COO', detail:'Endüstri Mühendisi' },
+        { id:4, initials:'FŞ', name:'Fatma Şahin', role:'CMO', detail:'Pazarlama Uzmanı' }
+    ]
+};
 
-let users = JSON.parse(localStorage.getItem('odak_users')) || defaultUsers;
+let siteData = JSON.parse(localStorage.getItem('odak_siteData')) || defaultData;
+let users = JSON.parse(localStorage.getItem('odak_users')) || [
+    { id:1, name:'Admin', email:'admin@odak.com', password:'admin123', role:'admin' },
+    { id:2, name:'Kullanıcı', email:'user@odak.com', password:'123456', role:'user' }
+];
 let currentUser = JSON.parse(localStorage.getItem('odak_currentUser')) || null;
 let authMode = 'login';
+let editTarget = null;
 
-function saveUsers() { localStorage.setItem('odak_users', JSON.stringify(users)); }
+function saveAll() {
+    localStorage.setItem('odak_siteData', JSON.stringify(siteData));
+    localStorage.setItem('odak_users', JSON.stringify(users));
+}
 function saveCurrentUser() { localStorage.setItem('odak_currentUser', JSON.stringify(currentUser)); }
 
-// ============ AUTH MODAL ============
-function openLoginModal() {
-    document.getElementById('loginModal').classList.add('show');
-    authMode = 'login';
-    updateAuthUI();
+// ============ RENDER ============
+function renderAll() {
+    renderServices();
+    renderMarket();
+    renderDigital();
+    renderTeam();
 }
-function closeLoginModal() { document.getElementById('loginModal').classList.remove('show'); }
-function switchTab(mode) {
-    authMode = mode;
-    updateAuthUI();
+function renderServices() {
+    document.getElementById('servicesContainer').innerHTML = siteData.services.map(s => `
+        <div class="service-card">
+            ${currentUser?.role==='admin' ? `<button class="edit-btn" onclick="editItem('services',${s.id})">✏️ Düzenle</button>` : ''}
+            <div class="icon">${s.icon}</div>
+            <h3>${s.title}</h3>
+            <p>${s.desc}</p>
+            <ul>${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+        </div>
+    `).join('');
+    if (currentUser?.role==='admin') document.getElementById('addServiceBtn').classList.remove('hidden');
 }
-function updateAuthUI() {
-    document.getElementById('tabLogin').classList.toggle('active', authMode === 'login');
-    document.getElementById('tabRegister').classList.toggle('active', authMode === 'register');
-    document.getElementById('authName').classList.toggle('hidden', authMode === 'login');
-    document.getElementById('modalTitle').textContent = authMode === 'login' ? '🔐 Giriş Yap' : '✨ Kayıt Ol';
-    document.getElementById('authSubmitBtn').textContent = authMode === 'login' ? 'Giriş Yap' : 'Kayıt Ol';
+function renderMarket() {
+    document.getElementById('marketContainer').innerHTML = siteData.market.map(m => `
+        <div class="market-card">
+            ${currentUser?.role==='admin' ? `<button class="edit-btn" onclick="editItem('market',${m.id})">✏️</button>` : ''}
+            <div class="icon">${m.icon}</div><h4>${m.title}</h4><p>${m.desc}</p>
+        </div>
+    `).join('');
+}
+function renderDigital() {
+    document.getElementById('digitalContainer').innerHTML = siteData.digital.map(d => `
+        <div class="feature-item">
+            ${currentUser?.role==='admin' ? `<button class="edit-btn" onclick="editItem('digital',${d.id})">✏️</button>` : ''}
+            <div class="icon">${d.icon}</div><h4>${d.title}</h4><p>${d.desc}</p>
+        </div>
+    `).join('');
+}
+function renderTeam() {
+    document.getElementById('teamContainer').innerHTML = siteData.team.map(t => `
+        <div class="team-card">
+            ${currentUser?.role==='admin' ? `<button class="edit-btn" onclick="editItem('team',${t.id})">✏️</button>` : ''}
+            <div class="team-avatar">${t.initials}</div><h4>${t.name}</h4><p>${t.role}</p><p style="font-size:0.8rem;color:var(--text);">${t.detail}</p>
+        </div>
+    `).join('');
 }
 
+// ============ EDIT SYSTEM ============
+function editItem(type, id) {
+    editTarget = { type, id };
+    const item = siteData[type].find(i => i.id === id);
+    if (!item) return;
+    
+    document.getElementById('editModalTitle').textContent = `✏️ ${item.title || item.name} Düzenle`;
+    let formHTML = '';
+    
+    if (type === 'services') {
+        formHTML = `
+            <label>İkon</label><input type="text" id="editIcon" value="${item.icon}">
+            <label>Başlık</label><input type="text" id="editTitle" value="${item.title}">
+            <label>Açıklama</label><textarea id="editDesc">${item.desc}</textarea>
+            <label>Maddeler (virgülle ayırın)</label><textarea id="editItems">${item.items.join(',')}</textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%;">💾 Kaydet</button>
+            <button type="button" class="btn btn-danger" style="width:100%;margin-top:5px;" onclick="deleteItem('services',${item.id})">🗑️ Sil</button>
+        `;
+    } else if (type === 'market' || type === 'digital') {
+        formHTML = `
+            <label>İkon</label><input type="text" id="editIcon" value="${item.icon}">
+            <label>Başlık</label><input type="text" id="editTitle" value="${item.title}">
+            <label>Açıklama</label><textarea id="editDesc">${item.desc}</textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%;">💾 Kaydet</button>
+            <button type="button" class="btn btn-danger" style="width:100%;margin-top:5px;" onclick="deleteItem('${type}',${item.id})">🗑️ Sil</button>
+        `;
+    } else if (type === 'team') {
+        formHTML = `
+            <label>İsim</label><input type="text" id="editName" value="${item.name}">
+            <label>Baş Harfler</label><input type="text" id="editInitials" value="${item.initials}">
+            <label>Rol</label><input type="text" id="editRole" value="${item.role}">
+            <label>Detay</label><input type="text" id="editDetail" value="${item.detail}">
+            <button type="submit" class="btn btn-primary" style="width:100%;">💾 Kaydet</button>
+            <button type="button" class="btn btn-danger" style="width:100%;margin-top:5px;" onclick="deleteItem('team',${item.id})">🗑️ Sil</button>
+        `;
+    }
+    
+    document.getElementById('editForm').innerHTML = formHTML;
+    document.getElementById('editModal').classList.add('show');
+}
+
+function saveEdit(e) {
+    e.preventDefault();
+    if (!editTarget) return;
+    const { type, id } = editTarget;
+    const item = siteData[type].find(i => i.id === id);
+    if (!item) return;
+    
+    if (type === 'services') {
+        item.icon = document.getElementById('editIcon').value;
+        item.title = document.getElementById('editTitle').value;
+        item.desc = document.getElementById('editDesc').value;
+        item.items = document.getElementById('editItems').value.split(',').map(s => s.trim()).filter(Boolean);
+    } else if (type === 'market' || type === 'digital') {
+        item.icon = document.getElementById('editIcon').value;
+        item.title = document.getElementById('editTitle').value;
+        item.desc = document.getElementById('editDesc').value;
+    } else if (type === 'team') {
+        item.name = document.getElementById('editName').value;
+        item.initials = document.getElementById('editInitials').value;
+        item.role = document.getElementById('editRole').value;
+        item.detail = document.getElementById('editDetail').value;
+    }
+    
+    saveAll();
+    renderAll();
+    closeEditModal();
+    alert('✅ Değişiklikler kaydedildi!');
+}
+
+function deleteItem(type, id) {
+    if (confirm('Bu öğeyi silmek istediğinize emin misiniz?')) {
+        siteData[type] = siteData[type].filter(i => i.id !== id);
+        saveAll();
+        renderAll();
+        closeEditModal();
+        alert('✅ Silindi!');
+    }
+}
+
+function addNewItem(type) {
+    const newId = Date.now();
+    if (type === 'services') {
+        siteData.services.push({ id:newId, icon:'📦', title:'Yeni Hizmet', desc:'Açıklama', items:['Madde 1'] });
+    } else if (type === 'market') {
+        siteData.market.push({ id:newId, icon:'📦', title:'Yeni Ürün', desc:'Açıklama' });
+    } else if (type === 'digital') {
+        siteData.digital.push({ id:newId, icon:'📦', title:'Yeni Özellik', desc:'Açıklama' });
+    } else if (type === 'team') {
+        siteData.team.push({ id:newId, initials:'YK', name:'Yeni Kişi', role:'Rol', detail:'Detay' });
+    }
+    saveAll();
+    renderAll();
+    alert('✅ Yeni öğe eklendi! Düzenlemek için üzerine gelip ✏️ butonuna tıklayın.');
+}
+
+function closeEditModal() { document.getElementById('editModal').classList.remove('show'); editTarget = null; }
+
+// ============ AUTH ============
+function openLoginModal() { document.getElementById('loginModal').classList.add('show'); authMode='login'; updateAuthUI(); }
+function closeLoginModal() { document.getElementById('loginModal').classList.remove('show'); }
+function switchTab(mode) { authMode=mode; updateAuthUI(); }
+function updateAuthUI() {
+    document.getElementById('tabLogin').classList.toggle('active', authMode==='login');
+    document.getElementById('tabRegister').classList.toggle('active', authMode==='register');
+    document.getElementById('authName').classList.toggle('hidden', authMode==='login');
+    document.getElementById('modalTitle').textContent = authMode==='login'?'🔐 Giriş':'✨ Kayıt';
+    document.querySelector('#authForm button').textContent = authMode==='login'?'Giriş Yap':'Kayıt Ol';
+}
 function handleAuth(e) {
     e.preventDefault();
     const email = document.getElementById('authEmail').value.trim();
-    const password = document.getElementById('authPassword').value;
+    const pass = document.getElementById('authPassword').value;
     const name = document.getElementById('authName').value.trim();
-    
-    if (authMode === 'login') {
-        const user = users.find(u => u.email === email && u.password === password);
-        if (user) {
-            currentUser = user;
-            saveCurrentUser();
-            updateNavbar();
-            closeLoginModal();
-            alert(`✅ Hoş geldiniz, ${user.name}!`);
-        } else {
-            alert('❌ Geçersiz e-posta veya şifre!');
-        }
+    if (authMode==='login') {
+        const u = users.find(u=>u.email===email&&u.password===pass);
+        if (u) { currentUser=u; saveCurrentUser(); updateNavbar(); closeLoginModal(); renderAll(); alert(`✅ Hoş geldiniz, ${u.name}!`); }
+        else alert('❌ Hatalı giriş!');
     } else {
-        if (!name) return alert('Ad Soyad girin!');
-        if (users.find(u => u.email === email)) return alert('Bu e-posta zaten kayıtlı!');
-        const newUser = { id: Date.now(), name, email, password, role: 'user' };
-        users.push(newUser);
-        saveUsers();
-        currentUser = newUser;
-        saveCurrentUser();
-        updateNavbar();
-        closeLoginModal();
-        alert(`✅ Kayıt başarılı! Hoş geldiniz, ${name}!`);
+        if (!name) return alert('Ad girin!');
+        if (users.find(u=>u.email===email)) return alert('Kayıtlı e-posta!');
+        const newU = { id:Date.now(), name, email, password:pass, role:'user' };
+        users.push(newU); saveAll(); currentUser=newU; saveCurrentUser(); updateNavbar(); closeLoginModal(); renderAll();
+        alert(`✅ Kayıt başarılı! ${name}`);
     }
 }
-
-function logout() {
-    if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
-        currentUser = null;
-        saveCurrentUser();
-        updateNavbar();
-        document.getElementById('adminPanel').classList.remove('show');
-        alert('👋 Çıkış yapıldı!');
-    }
-}
-
+function logout() { if(confirm('Çıkış?')){ currentUser=null; saveCurrentUser(); updateNavbar(); renderAll(); document.getElementById('adminPanel').classList.remove('show'); } }
 function updateNavbar() {
-    const navLogin = document.getElementById('nav-login');
-    const navUser = document.getElementById('nav-user');
-    const navUsername = document.getElementById('nav-username');
-    const adminLink = document.getElementById('admin-link-menu');
-    
+    document.getElementById('nav-login').classList.toggle('hidden', !!currentUser);
+    document.getElementById('nav-user').classList.toggle('hidden', !currentUser);
     if (currentUser) {
-        navLogin.classList.add('hidden');
-        navUser.classList.remove('hidden');
-        navUsername.textContent = `👤 ${currentUser.name}`;
-        if (currentUser.role === 'admin') {
-            adminLink.classList.remove('hidden');
-        } else {
-            adminLink.classList.add('hidden');
-        }
-    } else {
-        navLogin.classList.remove('hidden');
-        navUser.classList.add('hidden');
-    }
-}
-
-// ============ NAVIGATION ============
-function navigateTo(page) {
-    if (page === 'admin') {
-        if (!currentUser || currentUser.role !== 'admin') {
-            return alert('⛔ Bu sayfaya erişim yetkiniz yok! Sadece admin kullanıcılar erişebilir.');
-        }
-        renderAdminPanel();
-        document.getElementById('adminPanel').classList.add('show');
-        document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('nav-username').textContent = `👤 ${currentUser.name}`;
+        document.getElementById('admin-link-menu').classList.toggle('hidden', currentUser.role!=='admin');
     }
 }
 
 // ============ ADMIN PANEL ============
+function navigateTo(page) {
+    if (page==='admin' && currentUser?.role==='admin') {
+        renderAdminPanel();
+        document.getElementById('adminPanel').classList.add('show');
+        document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'});
+    }
+}
 function renderAdminPanel() {
-    const content = document.getElementById('adminContent');
-    const totalUsers = users.length;
-    const adminCount = users.filter(u => u.role === 'admin').length;
-    const userCount = users.filter(u => u.role === 'user').length;
-    const editorCount = users.filter(u => u.role === 'editor').length;
-    
-    content.innerHTML = `
-        <div class="admin-card">
-            <h4>📊 İstatistikler</h4>
-            <p>Toplam Kullanıcı: <strong>${totalUsers}</strong></p>
-            <p>Admin: <strong>${adminCount}</strong> | Editör: <strong>${editorCount}</strong> | Kullanıcı: <strong>${userCount}</strong></p>
+    document.getElementById('adminContent').innerHTML = `
+        <div class="admin-card"><h4>📊 Site Verileri</h4>
+            <p>Hizmetler: ${siteData.services.length} | Market: ${siteData.market.length} | Dijital: ${siteData.digital.length} | Ekip: ${siteData.team.length}</p>
+            <p>Kullanıcılar: ${users.length}</p>
         </div>
-        
-        <div class="admin-card">
-            <h4>➕ Kullanıcı Ekle</h4>
-            <form onsubmit="adminAddUser(event)" style="display:flex; flex-direction:column; gap:10px;">
-                <input type="text" id="adminNewName" placeholder="Ad Soyad" required>
+        <div class="admin-card"><h4>➕ Kullanıcı Ekle</h4>
+            <form onsubmit="adminAddUser(event)" style="display:flex;flex-direction:column;gap:8px;">
+                <input type="text" id="adminNewName" placeholder="Ad" required>
                 <input type="email" id="adminNewEmail" placeholder="E-posta" required>
                 <input type="password" id="adminNewPass" placeholder="Şifre" required>
-                <select id="adminNewRole">
-                    <option value="user">Kullanıcı</option>
-                    <option value="editor">Editör</option>
-                    <option value="admin">Admin</option>
-                </select>
+                <select id="adminNewRole"><option value="user">Kullanıcı</option><option value="admin">Admin</option></select>
                 <button type="submit" class="btn btn-primary">➕ Ekle</button>
             </form>
         </div>
-        
-        <div class="admin-card" style="grid-column: span 2;">
-            <h4>👥 Kullanıcı Listesi</h4>
-            <table class="admin-table">
-                <thead><tr><th>Ad</th><th>E-posta</th><th>Rol</th><th>İşlem</th></tr></thead>
-                <tbody>
-                    ${users.map(u => `
-                        <tr>
-                            <td>${u.name}</td>
-                            <td>${u.email}</td>
-                            <td>
-                                <select onchange="adminChangeRole(${u.id}, this.value)" style="padding:4px; border-radius:6px; border:1px solid #e2e8f0;">
-                                    <option value="user" ${u.role==='user'?'selected':''}>Kullanıcı</option>
-                                    <option value="editor" ${u.role==='editor'?'selected':''}>Editör</option>
-                                    <option value="admin" ${u.role==='admin'?'selected':''}>Admin</option>
-                                </select>
-                            </td>
-                            <td>
-                                <button onclick="adminDeleteUser(${u.id})" class="btn btn-danger" style="padding:4px 10px; font-size:0.75rem;">🗑️ Sil</button>
-                            </td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
+        <div class="admin-card" style="grid-column:span 2;"><h4>👥 Kullanıcılar</h4>
+            <table class="admin-table"><thead><tr><th>Ad</th><th>E-posta</th><th>Rol</th><th>İşlem</th></tr></thead>
+                <tbody>${users.map(u=>`<tr><td>${u.name}</td><td>${u.email}</td>
+                    <td><select onchange="adminChangeRole(${u.id},this.value)" style="padding:4px;border-radius:6px;border:1px solid #e2e8f0;">
+                        <option value="user" ${u.role==='user'?'selected':''}>Kullanıcı</option>
+                        <option value="admin" ${u.role==='admin'?'selected':''}>Admin</option>
+                    </select></td>
+                    <td><button onclick="adminDeleteUser(${u.id})" class="btn btn-danger" style="padding:4px 10px;font-size:0.7rem;">🗑️</button></td></tr>`).join('')}</tbody></table>
+        </div>
+        <div class="admin-card" style="grid-column:span 2;"><h4>📋 Hızlı İçerik Ekle</h4>
+            <button class="btn btn-primary" onclick="addNewItem('services')" style="margin:3px;">➕ Hizmet</button>
+            <button class="btn btn-primary" onclick="addNewItem('market')" style="margin:3px;">➕ Market Ürünü</button>
+            <button class="btn btn-primary" onclick="addNewItem('digital')" style="margin:3px;">➕ Dijital Özellik</button>
+            <button class="btn btn-primary" onclick="addNewItem('team')" style="margin:3px;">➕ Ekip Üyesi</button>
+            <p style="font-size:0.75rem;margin-top:10px;color:var(--text);">Ekledikten sonra ✏️ butonuyla düzenleyebilirsiniz.</p>
         </div>
     `;
 }
-
 function adminAddUser(e) {
     e.preventDefault();
-    const name = document.getElementById('adminNewName').value.trim();
-    const email = document.getElementById('adminNewEmail').value.trim();
-    const password = document.getElementById('adminNewPass').value;
-    const role = document.getElementById('adminNewRole').value;
-    
-    if (users.find(u => u.email === email)) return alert('Bu e-posta zaten kayıtlı!');
-    
-    users.push({ id: Date.now(), name, email, password, role });
-    saveUsers();
-    renderAdminPanel();
-    alert('✅ Kullanıcı eklendi!');
-    e.target.reset();
+    const n=document.getElementById('adminNewName').value.trim();
+    const em=document.getElementById('adminNewEmail').value.trim();
+    const p=document.getElementById('adminNewPass').value;
+    const r=document.getElementById('adminNewRole').value;
+    if(users.find(u=>u.email===em)) return alert('Kayıtlı!');
+    users.push({id:Date.now(),name:n,email:em,password:p,role:r}); saveAll(); renderAdminPanel(); alert('✅ Eklendi!'); e.target.reset();
 }
-
-function adminDeleteUser(id) {
-    if (id === currentUser?.id) return alert('Kendinizi silemezsiniz!');
-    if (confirm('Bu kullanıcıyı silmek istediğinize emin misiniz?')) {
-        users = users.filter(u => u.id !== id);
-        saveUsers();
-        renderAdminPanel();
-        alert('✅ Kullanıcı silindi!');
-    }
-}
-
-function adminChangeRole(id, newRole) {
-    const user = users.find(u => u.id === id);
-    if (user) {
-        user.role = newRole;
-        saveUsers();
-        if (currentUser?.id === id) {
-            currentUser.role = newRole;
-            saveCurrentUser();
-            updateNavbar();
-        }
-        alert(`✅ Rol güncellendi: ${newRole}`);
-    }
-}
+function adminDeleteUser(id) { if(id===currentUser?.id) return alert('Kendinizi silemezsiniz!'); if(confirm('Sil?')){ users=users.filter(u=>u.id!==id); saveAll(); renderAdminPanel(); } }
+function adminChangeRole(id,r) { const u=users.find(u=>u.id===id); if(u){ u.role=r; saveAll(); if(currentUser?.id===id){ currentUser.role=r; saveCurrentUser(); updateNavbar(); } } }
 
 // ============ INIT ============
 function init() {
     updateNavbar();
+    renderAll();
+    document.getElementById('loginModal').addEventListener('click', function(e){ if(e.target===this) closeLoginModal(); });
+    document.getElementById('editModal').addEventListener('click', function(e){ if(e.target===this) closeEditModal(); });
 }
-
-// Modal dışına tıklayınca kapat
-document.getElementById('loginModal').addEventListener('click', function(e) {
-    if (e.target === this) closeLoginModal();
-});
-
-// Enter tuşu ile giriş
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLoginModal();
-});
-
 init();
 </script>
 </body>
